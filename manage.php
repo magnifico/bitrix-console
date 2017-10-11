@@ -23,7 +23,7 @@ $documentRoot = function ($dir = __DIR__) use (&$documentRoot) {
 $_SERVER['DOCUMENT_ROOT'] = $documentRoot();
 
 // define magic variables
-
+defined('BX_PUBLIC_TOOLS') or define('BX_PUBLIC_TOOLS', true);
 defined('NO_KEEP_STATISTIC') or define('NO_KEEP_STATISTIC', true);
 defined('NOT_CHECK_PERMISSIONS') or define('NOT_CHECK_PERMISSIONS', true);
 defined('BX_SECURITY_SESSION_VIRTUAL') or define('BX_SECURITY_SESSION_VIRTUAL', true);
