@@ -11,7 +11,7 @@ class Application extends ParentApplication
     public static function getInstance()
     {
         if (null === static::$instance) {
-            static::$instance = new parent();
+            static::$instance = new static();
         }
 
         return static::$instance;
