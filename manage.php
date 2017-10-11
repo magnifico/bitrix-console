@@ -8,19 +8,21 @@ if ('cli' !== php_sapi_name()) {
 
 // since console has no DOCUMENT_ROOT variable, we should locate it
 
-$documentRoot = function ($dir = __DIR__) use (&$documentRoot) {
-    if (is_dir($dir.'/bitrix')) {
-        return $dir;
-    }
-
-    if ('/' === $dir) {
-        die('Failed to locate document root'.PHP_EOL);
-    }
-
-    return $documentRoot(dirname($dir));
-};
-
-$_SERVER['DOCUMENT_ROOT'] = $documentRoot();
+if (empty($_SERVER['DOCUMENT_ROOT'])) {
+    $documentRoot = function ($dir = __DIR__) use (&$documentRoot) {
+        if (is_dir($dir.'/bitrix')) {
+            return $dir;
+        }
+    
+        if ('/' === $dir) {
+            die('Failed to locate document root'.PHP_EOL);
+        }
+    
+        return $documentRoot(dirname($dir));
+    };
+    
+    $_SERVER['DOCUMENT_ROOT'] = $documentRoot();
+}
 
 // define magic variables
 defined('BX_PUBLIC_TOOLS') or define('BX_PUBLIC_TOOLS', true);
