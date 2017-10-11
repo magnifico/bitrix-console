@@ -8,7 +8,7 @@
         }
     ],
     "extra": {
-        "installer-name": "magnifico.console"
+        "installer-name": "console"
     },
     "require": {
         "php": ">=7.0",
