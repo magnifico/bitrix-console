@@ -13,14 +13,14 @@ if (empty($_SERVER['DOCUMENT_ROOT'])) {
         if (is_dir($dir.'/bitrix')) {
             return $dir;
         }
-    
+
         if ('/' === $dir) {
             die('Failed to locate document root'.PHP_EOL);
         }
-    
+
         return $documentRoot(dirname($dir));
     };
-    
+
     $_SERVER['DOCUMENT_ROOT'] = $documentRoot();
 }
 
@@ -52,9 +52,14 @@ foreach (\Bitrix\Main\ModuleManager::getInstalledModules() as $module) {
     }
 }
 
-// run application
+// create app and collect commands from event listeners
 
-$app = \Magnifico\Console\Application::getInstance();
+$app = new \Symfony\Component\Console\Application();
+$event = new \Bitrix\Main\Event('magnifico.console', 'OnBeforeRun', ['app' => $app]);
+$event->send();
+
+// run!
+
 $app->run();
 
 // include bitrix epilog
