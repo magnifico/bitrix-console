@@ -1,15 +1,11 @@
 {
     "name": "magnifico/bitrix-console",
-    "type": "bitrix-d7-module",
     "authors": [
         {
             "name": "Igor Denisenko",
             "email": "im.denisenko@yandex.ru"
         }
     ],
-    "extra": {
-        "installer-name": "console"
-    },
     "require": {
         "php": ">=7.0",
         "symfony/console": "^3.0",
