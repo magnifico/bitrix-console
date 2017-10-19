@@ -12,13 +12,13 @@ defined('NO_KEEP_STATISTIC') or define('NO_KEEP_STATISTIC', true);
 defined('NOT_CHECK_PERMISSIONS') or define('NOT_CHECK_PERMISSIONS', true);
 defined('BX_SECURITY_SESSION_VIRTUAL') or define('BX_SECURITY_SESSION_VIRTUAL', true);
 
-// run forever
-
-ini_set('max_execution_time', 0);
-
 // include bitrix prolog
 
 require_once $_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/prolog_before.php';
+
+// run forever
+
+ini_set('max_execution_time', 0);
 
 // include console module
 
